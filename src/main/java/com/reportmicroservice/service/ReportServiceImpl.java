@@ -23,7 +23,7 @@ public class ReportServiceImpl implements ReportService {
     public Mono<Report> saveReport(ReportDto reportDto) {
         Report report = ReportMapper.mapToReport(reportDto);
         Mono<Report> savedReporting = reportRepository.save(report);
-        return savedReporting.map(reportingEntity -> ReportMapper.mapToReport(reportDto));
+        return reportRepository.save(report);
     }
 
     @Override
